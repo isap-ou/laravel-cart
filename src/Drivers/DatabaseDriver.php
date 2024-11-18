@@ -9,10 +9,18 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use IsapOu\LaravelCart\Contracts\CartItemContract;
+use IsapOu\LaravelCart\Contracts\CartItemProduct;
 use IsapOu\LaravelCart\Contracts\Driver;
+use IsapOu\LaravelCart\Exceptions\NotFoundException;
+use IsapOu\LaravelCart\Exceptions\NotImplementedException;
 use IsapOu\LaravelCart\Models\Cart;
 
+use function bcadd;
+use function bcmul;
+use function bcpow;
+use function class_implements;
 use function config;
+use function method_exists;
 
 class DatabaseDriver implements Driver
 {
@@ -48,7 +56,7 @@ class DatabaseDriver implements Driver
         return $this;
     }
 
-    public function get(?Authenticatable $user = null): Model|Cart
+    public function get(): Model|Cart
     {
         return $this->getCartModel()
             ->with('items')
@@ -61,10 +69,21 @@ class DatabaseDriver implements Driver
 
     /**
      * Store item in cart.
+     *
+     * @throws NotImplementedException
      */
     public function storeItem(CartItemContract $item): Driver
     {
-        $this->get()->storeItem($item);
+        if (! \in_array(CartItemProduct::class, class_implements($item->itemable), true)) {
+            throw new NotImplementedException('Itemable must implement CartItemProduct');
+        }
+
+        if (empty($item->itemable_id)) {
+            $item->itemable_id = $item->itemable->getAttribute('id');
+            $item->itemable_type = \get_class($item->itemable);
+        }
+
+        $this->get()->items()->save($item);
 
         return $this;
     }
@@ -83,13 +102,15 @@ class DatabaseDriver implements Driver
 
     /**
      * Increase the quantity of the item.
+     *
+     * @throws NotFoundException
      */
     public function increaseQuantity(CartItemContract $item, int $quantity = 1): static
     {
         $item = $this->get()->items()->find($item->getKey());
 
         if (! $item) {
-            throw new \RuntimeException('The item not found');
+            throw new NotFoundException('The item not found');
         }
 
         $item->increment('quantity', $quantity);
@@ -99,13 +120,15 @@ class DatabaseDriver implements Driver
 
     /**
      * Decrease the quantity of the item.
+     *
+     * @throws NotFoundException
      */
     public function decreaseQuantity(CartItemContract $item, int $quantity = 1): Driver
     {
         $item = $this->get()->items()->find($item->getKey());
 
         if (! $item) {
-            throw new \RuntimeException('The item not found');
+            throw new NotFoundException('The item not found');
         }
 
         $item->decrement('quantity', $quantity);
@@ -133,6 +156,32 @@ class DatabaseDriver implements Driver
         $this->get()?->items()->delete();
 
         return $this;
+    }
+
+    public function getTotalPrice(bool $incTaxes = true): string
+    {
+        $totalPrice = '0';
+        $cart = $this->get();
+
+        $cartScaleFactor = bcpow('10', (string) $cart->decimal_places);
+
+        /** @var CartItemContract $item */
+        foreach ($cart->items()->cursor() as $item) {
+            if (! method_exists($item->itemable, 'getPrice')) {
+                continue;
+            }
+
+            $itemScaleFactor = bcpow('10', (string) $item->decimal_places);
+            $pricePerUnit = bcmul(
+                (string) $item->itemable->getPrice($incTaxes),
+                (string) $item->quantity,
+                $itemScaleFactor
+            );
+
+            $totalPrice = bcadd($totalPrice, $pricePerUnit, $cartScaleFactor);
+        }
+
+        return $totalPrice;
     }
 
     protected function getCartModel(): Builder

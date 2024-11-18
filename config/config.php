@@ -26,8 +26,8 @@ return [
     'cart_items_table_name' => 'cart_items',
 
     'migration' => [
-        'decimal_places' => 2,
-        'quantity_decimal_places' => 1,
+        'decimal_places' => 0,
+        'quantity_decimal_places' => 0,
         'users' => [
             'table' => 'users',
             'foreign_key' => 'user_id',

@@ -5,7 +5,6 @@ namespace IsapOu\LaravelCart\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use IsapOu\LaravelCart\Concerns\HasUser;
-use IsapOu\LaravelCart\Contracts\CartItemContract;
 
 use function config;
 
@@ -30,23 +29,5 @@ class Cart extends Model
     public function items(): HasMany
     {
         return $this->hasMany(config('laravel-cart.drivers.database.cart_items_model'));
-    }
-
-    /**
-     * Store cart item in cart.
-     */
-    public function storeItem(CartItemContract $item): static
-    {
-        if (empty($item->itemable_id)) {
-            $item->itemable_id = $item->itemable->getAttribute('id');
-            $item->itemable_type = \get_class($item->itemable);
-        }
-
-        $this->items()->save($item);
-
-        // Dispatch Event
-        // LaravelCartStoreItemEvent::dispatch();
-
-        return $this;
     }
 }

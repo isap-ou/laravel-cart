@@ -27,4 +27,6 @@ interface Driver
     public function setGuard($guard): Driver;
 
     public function getUser(): ?Authenticatable;
+
+    public function getTotalPrice(bool $incTaxes = true): string;
 }
