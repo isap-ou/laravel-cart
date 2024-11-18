@@ -8,17 +8,23 @@ use Illuminate\Support\Collection;
 
 interface Driver
 {
-    public function storeItem(CartItemContract $item, ?Authenticatable $user = null): Driver;
+    public function storeItem(CartItemContract $item): Driver;
 
     public function storeItems(Collection $items): Driver;
 
-    public function increaseQuantity(CartItemContract $item, ?Authenticatable $user = null, int $quantity = 1): Driver;
+    public function increaseQuantity(CartItemContract $item, int $quantity = 1): Driver;
 
-    public function decreaseQuantity(CartItemContract $item, ?Authenticatable $user = null, int $quantity = 1): Driver;
+    public function decreaseQuantity(CartItemContract $item, int $quantity = 1): Driver;
 
-    public function removeItem(CartItemContract $item, ?Authenticatable $user = null): Driver;
+    public function removeItem(CartItemContract $item): Driver;
 
-    public function emptyCart(?Authenticatable $user = null): Driver;
+    public function emptyCart(): Driver;
 
-    public function get(?Authenticatable $user = null): Model;
+    public function get(): Model;
+
+    public function setUser(Authenticatable $user): Driver;
+
+    public function setGuard($guard): Driver;
+
+    public function getUser(): ?Authenticatable;
 }

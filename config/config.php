@@ -43,4 +43,6 @@ return [
         //    'foreign_key' => 'team_id',
         // ]
     ],
+
+    'guard' => 'web',
 ];
