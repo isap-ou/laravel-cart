@@ -4,12 +4,14 @@ namespace IsapOu\LaravelCart\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use IsapOu\LaravelCart\Contracts\CartItemContract;
+use IsapOu\LaravelCart\Concerns\HasUser;
 
 use function config;
 
 class Cart extends Model
 {
+    use HasUser;
+
     protected $fillable = [
         'decimal_places',
     ];
@@ -27,28 +29,5 @@ class Cart extends Model
     public function items(): HasMany
     {
         return $this->hasMany(config('laravel-cart.drivers.database.cart_items_model'));
-    }
-
-    /**
-     * Store cart item in cart.
-     */
-    public function storeItem(CartItemContract $item): static
-    {
-        if (empty($item->itemable_id)) {
-            $item->itemable_id = $item->itemable->getAttribute('id');
-            $item->itemable_type = \get_class($item->itemable);
-        }
-
-        $this->items()->save($item);
-
-        // Dispatch Event
-        // LaravelCartStoreItemEvent::dispatch();
-
-        return $this;
-    }
-
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(config('laravel-cart.models.user'), config('laravel-cart.migration.users.foreign_key'));
     }
 }

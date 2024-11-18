@@ -3,6 +3,7 @@
   "description": "Laravel cart is high customazible package for adding shopping cart functionality to Laravel applications",
   "type": "library",
   "require": {
+    "ext-bcmath": "*",
     "illuminate/support": "^10|^11",
     "alvin0/redis-model": "*"
   },

@@ -15,3 +15,4 @@ yarn-error.log
 /.vscode
 /.zed
 .DS_Store
+/composer.lock

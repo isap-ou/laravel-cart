@@ -18,7 +18,7 @@ return [
     'models' => [
         'cart' => IsapOu\LaravelCart\Models\Cart::class,
         'cart_items' => IsapOu\LaravelCart\Models\CartItem::class,
-        'user' => App\AdminUsers\Models\User::class,
+        'user' => App\Models\User::class,
     ],
 
     'cart_table_name' => 'carts',
@@ -26,8 +26,8 @@ return [
     'cart_items_table_name' => 'cart_items',
 
     'migration' => [
-        'decimal_places' => 2,
-        'quantity_decimal_places' => 1,
+        'decimal_places' => 0,
+        'quantity_decimal_places' => 0,
         'users' => [
             'table' => 'users',
             'foreign_key' => 'user_id',
@@ -43,4 +43,6 @@ return [
         //    'foreign_key' => 'team_id',
         // ]
     ],
+
+    'guard' => 'web',
 ];
