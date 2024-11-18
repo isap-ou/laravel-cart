@@ -20,7 +20,7 @@ class CartTest extends TestCase
     {
         $user = \App\AdminUsers\Models\User::factory()->create();
 
-        $virtualProduct = new VirtualProduct;
+        $virtualProduct = new VirtualProduct();
         $virtualProduct->save();
         $cartItem = CartItem::factory()->newModel();
         $cartItem->itemable()->associate($virtualProduct);
@@ -32,9 +32,8 @@ class CartTest extends TestCase
     #[Test]
     public function increaseQuantity()
     {
-        xdebug_break();
         $user = \App\AdminUsers\Models\User::factory()->create();
-        $virtualProduct = new VirtualProduct;
+        $virtualProduct = new VirtualProduct();
         $virtualProduct->save();
         $cartItem = CartItem::factory()->newModel();
         $cartItem->itemable()->associate($virtualProduct);

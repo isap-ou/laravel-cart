@@ -15,6 +15,6 @@ class CartManager extends Manager
 
     protected function createDatabaseDriver(): Driver
     {
-        return new DatabaseDriver;
+        return new DatabaseDriver();
     }
 }
