@@ -18,7 +18,7 @@ return [
     'models' => [
         'cart' => IsapOu\LaravelCart\Models\Cart::class,
         'cart_items' => IsapOu\LaravelCart\Models\CartItem::class,
-        'user' => App\AdminUsers\Models\User::class,
+        'user' => App\Models\User::class,
     ],
 
     'cart_table_name' => 'carts',
