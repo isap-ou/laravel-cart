@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             if (! empty(config('laravel-cart.migration.users'))) {
                 $table->foreignId(config('laravel-cart.migration.users.foreign_key'))
-                    ->nullable(config('laravel-cart.migration.users.nullable'))
+                    ->nullable()
+                    ->comment('By default user id is nullable because its allowed add item to cart as guest')
                     ->constrained(config('laravel-cart.migration.users.table'))
                     ->cascadeOnDelete();
             }
@@ -25,6 +26,9 @@ return new class extends Migration
                     ->constrained(config('laravel-cart.migration.teams.table'))
                     ->cascadeOnDelete();
             }
+            $table->string('session_id')
+                ->nullable()
+                ->comment('Session id should be filled, if user is guest');
             $table->unsignedTinyInteger('decimal_places')
                 ->default(config('laravel-cart.migration.decimal_places'));
             $table->timestamps();

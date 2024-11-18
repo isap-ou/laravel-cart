@@ -30,7 +30,6 @@ return [
         'quantity_decimal_places' => 1,
         'users' => [
             'table' => 'users',
-            'nullable' => false,
             'foreign_key' => 'user_id',
         ],
         'carts' => [
