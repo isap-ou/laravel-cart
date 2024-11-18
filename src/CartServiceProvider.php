@@ -24,7 +24,7 @@ class CartServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('laravel-cart.php'),
-        ]);
+        ], 'config');
 
         $this->publishesMigrations([
             __DIR__ . '/../migrations' => database_path('migrations'),
