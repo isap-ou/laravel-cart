@@ -1,0 +1,35 @@
+{
+  "name": "isap-ou/laravel-cart",
+  "description": "Laravel cart is high customazible package for adding shopping cart functionality to Laravel applications",
+  "type": "library",
+  "require": {
+    "illuminate/support": "^10|^11",
+    "alvin0/redis-model": "*"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "IsapOu\\LaravelCart\\": "src/",
+      "IsapOu\\LaravelCart\\Database\\Factories\\": "database/factories/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IsapOu\\LaravelCart\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "ISAP OU",
+      "email": "contact@isap.me"
+    }
+  ],
+  "minimum-stability": "stable",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IsapOu\\LaravelCart\\CartServiceProvider"
+      ]
+    }
+  }
+}
