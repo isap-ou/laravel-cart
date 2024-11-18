@@ -37,12 +37,14 @@ class DatabaseDriver implements Driver
     public function setUser(Authenticatable $user): Driver
     {
         $this->user = $user;
+
         return $this;
     }
 
     public function setGuard($guard): Driver
     {
         $this->guard = $guard;
+
         return $this;
     }
 
@@ -82,7 +84,8 @@ class DatabaseDriver implements Driver
     /**
      * Increase the quantity of the item.
      */
-    public function increaseQuantity(CartItemContract $item, int $quantity = 1): static {
+    public function increaseQuantity(CartItemContract $item, int $quantity = 1): static
+    {
         $item = $this->get()->items()->find($item->getKey());
 
         if (! $item) {
@@ -97,7 +100,8 @@ class DatabaseDriver implements Driver
     /**
      * Decrease the quantity of the item.
      */
-    public function decreaseQuantity(CartItemContract $item, int $quantity = 1): Driver {
+    public function decreaseQuantity(CartItemContract $item, int $quantity = 1): Driver
+    {
         $item = $this->get()->items()->find($item->getKey());
 
         if (! $item) {
@@ -112,7 +116,8 @@ class DatabaseDriver implements Driver
     /**
      * Remove a single item from the cart
      */
-    public function removeItem(CartItemContract $item): Driver {
+    public function removeItem(CartItemContract $item): Driver
+    {
         $this->get()->items()
             ->find($item->getKey())
             ?->delete();
