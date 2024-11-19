@@ -79,7 +79,7 @@ class DatabaseDriver implements Driver
         }
 
         if (empty($item->itemable_id)) {
-            $item->itemable_id = $item->itemable->getAttribute('id');
+            $item->itemable_id = $item->itemable->getKey();
             $item->itemable_type = \get_class($item->itemable);
         }
 
