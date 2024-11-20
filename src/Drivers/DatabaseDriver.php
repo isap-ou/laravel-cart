@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use IsapOu\LaravelCart\Contracts\CartItemContract;
 use IsapOu\LaravelCart\Contracts\CartItemProduct;
 use IsapOu\LaravelCart\Contracts\Driver;
+use IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
 use IsapOu\LaravelCart\Exceptions\NotFoundException;
 use IsapOu\LaravelCart\Exceptions\NotImplementedException;
 use IsapOu\LaravelCart\Models\Cart;
@@ -35,11 +36,11 @@ class DatabaseDriver implements Driver
 
     public function getUser(): ?Authenticatable
     {
-        if (! empty($this->user)) {
-            return $this->user;
+        if (empty($this->user)) {
+            $this->user = Auth::guard($this->guard)->user();
         }
 
-        return Auth::guard($this->guard)->user();
+        return $this->user;
     }
 
     public function setUser(Authenticatable $user): Driver
@@ -59,7 +60,7 @@ class DatabaseDriver implements Driver
     public function get(): Model|Cart
     {
         return $this->getCartModel()
-            ->with('items')
+            ->with('items.itemable')
             ->when(
                 ! empty($this->getUser()),
                 fn ($query) => $query->firstOrCreate(['user_id' => $this->getUser()->getKey()]),
@@ -70,7 +71,11 @@ class DatabaseDriver implements Driver
     /**
      * Store item in cart.
      *
-     * @throws NotImplementedException
+     * @param \IsapOu\LaravelCart\Contracts\CartItemContract $item
+     * @return \IsapOu\LaravelCart\Contracts\Driver
+     * @throws \IsapOu\LaravelCart\Exceptions\NotFoundException
+     * @throws \IsapOu\LaravelCart\Exceptions\NotImplementedException
+     * @throws \IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException
      */
     public function storeItem(CartItemContract $item): Driver
     {
@@ -78,12 +83,16 @@ class DatabaseDriver implements Driver
             throw new NotImplementedException('Itemable must implement CartItemProduct');
         }
 
-        if (empty($item->itemable_id)) {
-            $item->itemable_id = $item->itemable->getKey();
-            $item->itemable_type = \get_class($item->itemable);
+        $cart = $this->get();
+
+        if ($item->exists) {
+            if (! $cart->items->contains($item)) {
+                throw new ItemAssociatedWithDifferentCartException('The item belongs to another cart');
+            }
+            return $this->increaseQuantity($item);
         }
 
-        $this->get()->items()->save($item);
+        $cart->items()->save($item);
 
         return $this;
     }
@@ -93,9 +102,7 @@ class DatabaseDriver implements Driver
      */
     public function storeItems(Collection $items): static
     {
-        $cart = $this->get();
-
-        $items->each(fn (CartItemContract $item) => $cart->storeItem($item));
+        $items->each(fn (CartItemContract $item) => $this->storeItem($item));
 
         return $this;
     }

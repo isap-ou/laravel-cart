@@ -4,8 +4,7 @@
   "type": "library",
   "require": {
     "ext-bcmath": "*",
-    "illuminate/support": "^10|^11",
-    "alvin0/redis-model": "*"
+    "illuminate/support": "^10|^11"
   },
   "license": "MIT",
   "autoload": {

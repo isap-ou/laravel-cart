@@ -28,6 +28,7 @@ return new class extends Migration
             }
             $table->string('session_id')
                 ->nullable()
+                ->index()
                 ->comment('Session id should be filled, if user is guest');
             $table->unsignedTinyInteger('decimal_places')
                 ->default(config('laravel-cart.migration.decimal_places'));
