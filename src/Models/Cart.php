@@ -4,7 +4,6 @@ namespace IsapOu\LaravelCart\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use IsapOu\LaravelCart\Concerns\HasUser;
 
 use function config;
 
@@ -12,7 +11,7 @@ class Cart extends Model
 {
     protected $fillable = [
         'decimal_places',
-        'session_id'
+        'session_id',
     ];
 
     public function __construct(array $attributes = [])

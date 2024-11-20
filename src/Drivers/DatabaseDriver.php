@@ -71,11 +71,9 @@ class DatabaseDriver implements Driver
     /**
      * Store item in cart.
      *
-     * @param \IsapOu\LaravelCart\Contracts\CartItemContract $item
-     * @return \IsapOu\LaravelCart\Contracts\Driver
-     * @throws \IsapOu\LaravelCart\Exceptions\NotFoundException
-     * @throws \IsapOu\LaravelCart\Exceptions\NotImplementedException
-     * @throws \IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws ItemAssociatedWithDifferentCartException
      */
     public function storeItem(CartItemContract $item): Driver
     {
@@ -89,6 +87,7 @@ class DatabaseDriver implements Driver
             if (! $cart->items->contains($item)) {
                 throw new ItemAssociatedWithDifferentCartException('The item belongs to another cart');
             }
+
             return $this->increaseQuantity($item);
         }
 

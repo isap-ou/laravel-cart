@@ -3,10 +3,7 @@
 namespace IsapOu\LaravelCart\Tests\SetUp\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use IsapOu\LaravelCart\Tests\SetUp\Models\Product;
-use IsapOu\LaravelCart\Tests\SetUp\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\AdminUsers\Models\User>

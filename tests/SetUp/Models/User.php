@@ -9,6 +9,7 @@ use IsapOu\LaravelCart\Tests\SetUp\Factories\UserFactory;
 class User extends Authenticatable
 {
     use HasFactory;
+
     /**
      * Fillable columns.
      *

@@ -4,7 +4,6 @@ namespace IsapOu\LaravelCart\Concerns;
 
 trait Itemable
 {
-
     /**
      * Relation polymorphic, inverse one-to-one or many relationship.
      */
@@ -12,5 +11,4 @@ trait Itemable
     {
         return $this->morphTo();
     }
-
 }

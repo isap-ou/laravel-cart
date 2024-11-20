@@ -2,7 +2,6 @@
 
 namespace IsapOu\LaravelCart\Facades;
 
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Support\Facades\Facade;
 use IsapOu\LaravelCart\Contracts\CartItemContract;
 

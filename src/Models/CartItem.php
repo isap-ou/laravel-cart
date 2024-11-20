@@ -13,9 +13,9 @@ use function config;
 
 class CartItem extends Model implements CartItemContract
 {
+    use HasCart;
     use HasFactory;
     use Itemable;
-    use HasCart;
 
     protected static $factory = CartItemFactory::class;
 
