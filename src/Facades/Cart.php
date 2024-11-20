@@ -8,9 +8,9 @@ use IsapOu\LaravelCart\Contracts\CartItemContract;
 
 /**
  * @method static \IsapOu\LaravelCart\Contracts\Driver driver(string|null $driver = null)
- * @method static \IsapOu\LaravelCart\Contracts\Driver storeItem(CartItemContract $item, ?AuthenticatableContract $user)
- * @method static \IsapOu\LaravelCart\Contracts\Driver increaseQuantity(CartItemContract $item, AuthenticatableContract $user, int $quantity = 1)
- * @method static \IsapOu\LaravelCart\Contracts\Driver get(?AuthenticatableContract $user)
+ * @method static \IsapOu\LaravelCart\Contracts\Driver storeItem(CartItemContract $item)
+ * @method static \IsapOu\LaravelCart\Contracts\Driver increaseQuantity(CartItemContract $item, int $quantity = 1)
+ * @method static \IsapOu\LaravelCart\Contracts\Driver get()
  */
 class Cart extends Facade
 {

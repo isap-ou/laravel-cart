@@ -12,5 +12,5 @@ namespace IsapOu\LaravelCart\Contracts;
  */
 interface CartItemContract
 {
-    public function itemable(): ?\Illuminate\Database\Eloquent\Relations\MorphTo;
+    public function itemable();
 }

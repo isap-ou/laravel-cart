@@ -11,7 +11,6 @@ return [
         ],
 
         'redis' => [
-
         ],
     ],
 
@@ -19,6 +18,7 @@ return [
         'cart' => IsapOu\LaravelCart\Models\Cart::class,
         'cart_items' => IsapOu\LaravelCart\Models\CartItem::class,
         'user' => App\Models\User::class,
+        'team' => null,
     ],
 
     'cart_table_name' => 'carts',

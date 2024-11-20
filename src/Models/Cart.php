@@ -10,10 +10,9 @@ use function config;
 
 class Cart extends Model
 {
-    use HasUser;
-
     protected $fillable = [
         'decimal_places',
+        'session_id'
     ];
 
     public function __construct(array $attributes = [])
@@ -22,12 +21,15 @@ class Cart extends Model
 
         $this->table = config('laravel-cart.cart_table_name', 'carts');
         if (! empty(config('laravel-cart.migration.users'))) {
-            $this->fillable[] = config('laravel-cart.migration.users.foreign_key', 'id');
+            $this->fillable[] = config('laravel-cart.migration.users.foreign_key', 'user_id');
+        }
+        if (! empty(config('laravel-cart.migration.teams'))) {
+            $this->fillable[] = config('laravel-cart.migration.teams.foreign_key', 'team_id');
         }
     }
 
     public function items(): HasMany
     {
-        return $this->hasMany(config('laravel-cart.drivers.database.cart_items_model'));
+        return $this->hasMany(config('laravel-cart.drivers.database.cart_item_model'));
     }
 }
