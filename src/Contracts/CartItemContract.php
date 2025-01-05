@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Contracts;
+namespace Isapp\LaravelCart\Contracts;
 
 /**
  * @property int|string $cart_id

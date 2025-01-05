@@ -6,8 +6,8 @@ return [
 
     'drivers' => [
         'database' => [
-            'cart_model' => IsapOu\LaravelCart\Models\Cart::class,
-            'cart_item_model' => IsapOu\LaravelCart\Models\CartItem::class,
+            'cart_model' => Isapp\LaravelCart\Models\Cart::class,
+            'cart_item_model' => Isapp\LaravelCart\Models\CartItem::class,
         ],
 
         'redis' => [
@@ -15,8 +15,8 @@ return [
     ],
 
     'models' => [
-        'cart' => IsapOu\LaravelCart\Models\Cart::class,
-        'cart_items' => IsapOu\LaravelCart\Models\CartItem::class,
+        'cart' => Isapp\LaravelCart\Models\Cart::class,
+        'cart_items' => Isapp\LaravelCart\Models\CartItem::class,
         'user' => App\Models\User::class,
         'team' => null,
     ],

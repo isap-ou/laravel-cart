@@ -1,12 +1,11 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\SetUp\Models;
+namespace Isapp\LaravelCart\Tests\SetUp\Models;
 
-use Binafy\LaravelCart\Cartable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use IsapOu\LaravelCart\Contracts\CartItemProduct;
-use IsapOu\LaravelCart\Tests\SetUp\Factories\ProductFactory;
+use Isapp\LaravelCart\Contracts\CartItemProduct;
+use Isapp\LaravelCart\Tests\SetUp\Factories\ProductFactory;
 
 class Product extends Model implements CartItemProduct
 {
@@ -23,14 +22,13 @@ class Product extends Model implements CartItemProduct
 
     /**
      * Get the correct price.
-     * @param bool $incTaxes
+     *
      * @return mixed
      */
     public function getPrice(bool $incTaxes = true)
     {
         return $this->price;
     }
-
 
     public static $factory = ProductFactory::class;
 }

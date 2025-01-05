@@ -1,10 +1,7 @@
 <?php
 
-namespace IsapOu\LaravelCart\Exceptions;
+namespace Isapp\LaravelCart\Exceptions;
 
 use Exception;
 
-class ItemAssociatedWithDifferentCartException extends Exception
-{
-
-}
+class ItemAssociatedWithDifferentCartException extends Exception {}

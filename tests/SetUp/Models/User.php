@@ -1,14 +1,15 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\SetUp\Models;
+namespace Isapp\LaravelCart\Tests\SetUp\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use IsapOu\LaravelCart\Tests\SetUp\Factories\UserFactory;
+use Isapp\LaravelCart\Tests\SetUp\Factories\UserFactory;
 
 class User extends Authenticatable
 {
     use HasFactory;
+
     /**
      * Fillable columns.
      *

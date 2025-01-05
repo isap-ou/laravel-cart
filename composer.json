@@ -1,34 +1,52 @@
 {
   "name": "isap-ou/laravel-cart",
-  "description": "Laravel cart is high customazible package for adding shopping cart functionality to Laravel applications",
+  "description": "Is high customazible package for adding shopping cart functionality to Laravel applications",
   "type": "library",
+  "keywords": [
+    "framework",
+    "laravel",
+    "laravel-package",
+    "php",
+    "cart",
+    "e-commerce"
+  ],
   "require": {
     "ext-bcmath": "*",
     "illuminate/support": "^10|^11"
   },
+  "support": {
+    "email": "contact@isap.me"
+  },
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "IsapOu\\LaravelCart\\": "src/",
-      "IsapOu\\LaravelCart\\Database\\Factories\\": "database/factories/"
+      "Isapp\\LaravelCart\\": "src/",
+      "Isapp\\LaravelCart\\Database\\Factories\\": "database/factories/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "IsapOu\\LaravelCart\\Tests\\": "tests/"
+      "Isapp\\LaravelCart\\Tests\\": "tests/"
     }
   },
   "authors": [
     {
-      "name": "ISAP OU",
-      "email": "contact@isap.me"
+      "name": "ISAP OÜ",
+      "email": "contact@isap.me",
+      "homepage": "https://isap.me"
+    },
+    {
+      "name": "Andrii Trush",
+      "email": "andrii.trush@isapp.be",
+      "homepage": "https://isapp.be"
     }
   ],
   "minimum-stability": "stable",
+  "prefer-stable": true,
   "extra": {
     "laravel": {
       "providers": [
-        "IsapOu\\LaravelCart\\CartServiceProvider"
+        "Isapp\\LaravelCart\\CartServiceProvider"
       ]
     }
   }

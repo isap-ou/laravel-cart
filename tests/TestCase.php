@@ -1,10 +1,10 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests;
+namespace Isapp\LaravelCart\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use IsapOu\LaravelCart\Tests\SetUp\TestServiceProvider;
+use Isapp\LaravelCart\Tests\SetUp\TestServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {

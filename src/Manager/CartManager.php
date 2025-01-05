@@ -1,11 +1,11 @@
 <?php
 
-namespace IsapOu\LaravelCart\Manager;
+namespace Isapp\LaravelCart\Manager;
 
 use Illuminate\Support\Manager;
-use IsapOu\LaravelCart\Contracts\Driver;
-use IsapOu\LaravelCart\Drivers\DatabaseDriver;
-use IsapOu\LaravelCart\Drivers\RedisDatabaseDriver;
+use Isapp\LaravelCart\Contracts\Driver;
+use Isapp\LaravelCart\Drivers\DatabaseDriver;
+use Isapp\LaravelCart\Drivers\RedisDatabaseDriver;
 
 class CartManager extends Manager
 {

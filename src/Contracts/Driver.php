@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Contracts;
+namespace Isapp\LaravelCart\Contracts;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

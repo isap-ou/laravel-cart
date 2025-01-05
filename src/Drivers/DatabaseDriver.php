@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Drivers;
+namespace Isapp\LaravelCart\Drivers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use IsapOu\LaravelCart\Contracts\CartItemContract;
-use IsapOu\LaravelCart\Contracts\CartItemProduct;
-use IsapOu\LaravelCart\Contracts\Driver;
-use IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
-use IsapOu\LaravelCart\Exceptions\NotFoundException;
-use IsapOu\LaravelCart\Exceptions\NotImplementedException;
-use IsapOu\LaravelCart\Models\Cart;
+use Isapp\LaravelCart\Contracts\CartItemContract;
+use Isapp\LaravelCart\Contracts\CartItemProduct;
+use Isapp\LaravelCart\Contracts\Driver;
+use Isapp\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
+use Isapp\LaravelCart\Exceptions\NotFoundException;
+use Isapp\LaravelCart\Exceptions\NotImplementedException;
+use Isapp\LaravelCart\Models\Cart;
 
 use function bcadd;
 use function bcmul;
@@ -71,11 +71,9 @@ class DatabaseDriver implements Driver
     /**
      * Store item in cart.
      *
-     * @param \IsapOu\LaravelCart\Contracts\CartItemContract $item
-     * @return \IsapOu\LaravelCart\Contracts\Driver
-     * @throws \IsapOu\LaravelCart\Exceptions\NotFoundException
-     * @throws \IsapOu\LaravelCart\Exceptions\NotImplementedException
-     * @throws \IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws ItemAssociatedWithDifferentCartException
      */
     public function storeItem(CartItemContract $item): Driver
     {
@@ -89,6 +87,7 @@ class DatabaseDriver implements Driver
             if (! $cart->items->contains($item)) {
                 throw new ItemAssociatedWithDifferentCartException('The item belongs to another cart');
             }
+
             return $this->increaseQuantity($item);
         }
 
