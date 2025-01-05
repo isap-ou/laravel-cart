@@ -1,9 +1,9 @@
 <?php
 
-namespace IsapOu\LaravelCart\Database\Factories;
+namespace Isapp\LaravelCart\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use IsapOu\LaravelCart\Models\CartItem;
+use Isapp\LaravelCart\Models\CartItem;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Model>

@@ -1,5 +1,7 @@
 # Laravel Cart
-
+[![Total Downloads](https://img.shields.io/packagist/dt/isapp/laravel-cart.svg?style=flat-square)](https://packagist.org/packages/isapp/laravel-cart)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/isapp/laravel-cart.svg?style=flat-square)](https://packagist.org/packages/isapp/laravel-cart)
+[![TinyMCE Picture Tag Helper for Laravel](https://github.com/isap-ou/laravel-cart/blob/main/images/banner.jpg?raw=true)](https://github.com/isap-ou/laravel-cart)
 **Laravel Cart** is a highly customizable package that enables you to easily add shopping cart functionality to your Laravel applications. With flexible options for item management, persistent storage, and deep integration with Laravel, it is perfect for building e-commerce or custom shopping features.
 
 ## Installation
@@ -15,7 +17,7 @@ composer require isap-ou/laravel-cart
 To modify the default configuration, publish the configuration file using the following Artisan command:
 
 ```bash
-php artisan vendor:publish --provider="IsapOu\LaravelCart\CartServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Isapp\LaravelCart\CartServiceProvider" --tag="config"
 ```
 
 This command will create a `config/laravel-cart.php` file where you can customize package settings as needed.
@@ -25,7 +27,7 @@ This command will create a `config/laravel-cart.php` file where you can customiz
 To publish the migration files provided by the `Laravel Cart` package, use the following Artisan command:
 
 ```bash
-php artisan vendor:publish --provider="IsapOu\LaravelCart\CartServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Isapp\LaravelCart\CartServiceProvider" --tag="migrations"
 ```
 
 This command will copy the migration files to your project's `database/migrations` directory.
@@ -49,7 +51,7 @@ Here is an example demonstrating how to achieve this:
     ```php
     namespace App\Services;
 
-    use IsapOu\LaravelCart\Contracts\Driver;
+    use Isapp\LaravelCart\Contracts\Driver;
 
     class CustomCartDriver implements Driver
     {
@@ -74,7 +76,7 @@ Here is an example demonstrating how to achieve this:
     namespace App\Providers;
 
     use Illuminate\Support\ServiceProvider;
-    use IsapOu\LaravelCart\Facades\Cart;
+    use Isapp\LaravelCart\Facades\Cart;
 
     class CartServiceProvider extends ServiceProvider
     {
@@ -88,9 +90,19 @@ Here is an example demonstrating how to achieve this:
     ```
 ## Contributing
 
-Feel free to submit issues, fork the repository, and create pull requests.
+Contributions are welcome! If you have suggestions for improvements, new features, or find any issues, feel free to
+submit a pull request or open an issue in this repository.
+
+Thank you for helping make this package better for the community!
 
 ## License
 
-This package is open-sourced software licensed under the [MIT license](LICENSE).
+This project is open-sourced software licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+You are free to use, modify, and distribute it in your projects, as long as you comply with the terms of the license.
+
+---
+
+Maintained by [ISAPP](https://isapp.be) and [ISAP OÜ](https://isap.me).  
+Check out our software development services at [isap.me](https://isap.me).
 

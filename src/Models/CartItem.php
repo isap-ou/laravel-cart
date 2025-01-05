@@ -1,13 +1,13 @@
 <?php
 
-namespace IsapOu\LaravelCart\Models;
+namespace Isapp\LaravelCart\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use IsapOu\LaravelCart\Concerns\HasCart;
-use IsapOu\LaravelCart\Concerns\Itemable;
-use IsapOu\LaravelCart\Contracts\CartItemContract;
-use IsapOu\LaravelCart\Database\Factories\CartItemFactory;
+use Isapp\LaravelCart\Concerns\HasCart;
+use Isapp\LaravelCart\Concerns\Itemable;
+use Isapp\LaravelCart\Contracts\CartItemContract;
+use Isapp\LaravelCart\Database\Factories\CartItemFactory;
 
 use function config;
 

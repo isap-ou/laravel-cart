@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Drivers;
+namespace Isapp\LaravelCart\Drivers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use IsapOu\LaravelCart\Contracts\CartItemContract;
-use IsapOu\LaravelCart\Contracts\CartItemProduct;
-use IsapOu\LaravelCart\Contracts\Driver;
-use IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
-use IsapOu\LaravelCart\Exceptions\NotFoundException;
-use IsapOu\LaravelCart\Exceptions\NotImplementedException;
-use IsapOu\LaravelCart\Models\Cart;
+use Isapp\LaravelCart\Contracts\CartItemContract;
+use Isapp\LaravelCart\Contracts\CartItemProduct;
+use Isapp\LaravelCart\Contracts\Driver;
+use Isapp\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
+use Isapp\LaravelCart\Exceptions\NotFoundException;
+use Isapp\LaravelCart\Exceptions\NotImplementedException;
+use Isapp\LaravelCart\Models\Cart;
 
 use function bcadd;
 use function bcmul;

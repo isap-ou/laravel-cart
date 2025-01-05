@@ -1,16 +1,16 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\Feature;
+namespace Isapp\LaravelCart\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use IsapOu\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
-use IsapOu\LaravelCart\Facades\Cart;
-use IsapOu\LaravelCart\Models\CartItem;
-use IsapOu\LaravelCart\Tests\SetUp\Models\Product;
-use IsapOu\LaravelCart\Tests\SetUp\Models\User;
-use IsapOu\LaravelCart\Tests\TestCase;
+use Isapp\LaravelCart\Exceptions\ItemAssociatedWithDifferentCartException;
+use Isapp\LaravelCart\Facades\Cart;
+use Isapp\LaravelCart\Models\CartItem;
+use Isapp\LaravelCart\Tests\SetUp\Models\Product;
+use Isapp\LaravelCart\Tests\SetUp\Models\User;
+use Isapp\LaravelCart\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
 use function xdebug_break;
@@ -28,7 +28,7 @@ class DatabaseDriverTest extends TestCase
         $cartItem->itemable()->associate($product);
         $cart = Cart::setUser($user)->storeItem($cartItem)->get();
 
-        $this->assertInstanceOf(\IsapOu\LaravelCart\Models\Cart::class, $cart);
+        $this->assertInstanceOf(\Isapp\LaravelCart\Models\Cart::class, $cart);
     }
 
     #[Test]

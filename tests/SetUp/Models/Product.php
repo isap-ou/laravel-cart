@@ -1,11 +1,11 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\SetUp\Models;
+namespace Isapp\LaravelCart\Tests\SetUp\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use IsapOu\LaravelCart\Contracts\CartItemProduct;
-use IsapOu\LaravelCart\Tests\SetUp\Factories\ProductFactory;
+use Isapp\LaravelCart\Contracts\CartItemProduct;
+use Isapp\LaravelCart\Tests\SetUp\Factories\ProductFactory;
 
 class Product extends Model implements CartItemProduct
 {

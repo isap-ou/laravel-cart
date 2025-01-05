@@ -1,10 +1,10 @@
 <?php
 
-namespace IsapOu\LaravelCart;
+namespace Isapp\LaravelCart;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use IsapOu\LaravelCart\Manager\CartManager;
+use Isapp\LaravelCart\Manager\CartManager;
 
 class CartServiceProvider extends ServiceProvider
 {

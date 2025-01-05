@@ -1,9 +1,9 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\SetUp\Factories;
+namespace Isapp\LaravelCart\Tests\SetUp\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use IsapOu\LaravelCart\Tests\SetUp\Models\Product;
+use Isapp\LaravelCart\Tests\SetUp\Models\Product;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\AdminUsers\Models\User>

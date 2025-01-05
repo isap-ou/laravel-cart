@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Tests\SetUp;
+namespace Isapp\LaravelCart\Tests\SetUp;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace IsapOu\LaravelCart\Concerns;
+namespace Isapp\LaravelCart\Concerns;
 
 trait Itemable
 {
