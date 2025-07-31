@@ -9,7 +9,7 @@
 To install the package, use Composer:
 
 ```bash
-composer require isap-ou/laravel-cart
+composer require isapp/laravel-cart
 ```
 
 ## Publishing Configuration
