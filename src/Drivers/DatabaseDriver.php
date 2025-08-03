@@ -59,13 +59,13 @@ class DatabaseDriver implements Driver
 
     public function get(): Model|Cart
     {
-        return $this->getCartModel()
+        return once(fn() => $this->getCartModel()
             ->with('items.itemable')
             ->when(
                 ! empty($this->getUser()),
                 fn ($query) => $query->firstOrCreate(['user_id' => $this->getUser()->getKey()]),
                 fn ($query) => $query->firstOrCreate(['session_id' => Session::getId()])
-            );
+            ));
     }
 
     /**
