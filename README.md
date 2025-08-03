@@ -365,5 +365,5 @@ You are free to use, modify, and distribute it in your projects, as long as you 
 ---
 
 Maintained by [ISAPP](https://isapp.be) and [ISAP OÜ](https://isap.me).  
-Check out our software development services at [isap.me](https://isap.me).
+Check out our software development services at [isapp.be](https://isapp.be).
 
