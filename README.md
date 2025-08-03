@@ -343,8 +343,8 @@ Here is an example demonstrating how to achieve this:
 - [ ] Add automated cleanup for expired cart sessions
 - [ ] Add method to get total items count in cart
 - [ ] Add method to get total quantity of all items
-- [ ] Add method to find item by ID
-- [ ] Add method to check if specific item exists in cart
+- [x] Add method to find item by ID
+- [x] Add method to check if specific item exists in cart
 - [ ] Add stock validation before adding items
 - [ ] Add events firing (ItemAdded, ItemRemoved, etc.)
 - [ ] Add method to merge carts (guest → user)

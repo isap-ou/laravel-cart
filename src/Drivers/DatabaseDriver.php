@@ -21,6 +21,7 @@ use function bcmul;
 use function bcpow;
 use function class_implements;
 use function config;
+use function is_scalar;
 use function method_exists;
 use function once;
 
@@ -64,9 +65,23 @@ class DatabaseDriver implements Driver
             ->with('items.itemable')
             ->when(
                 ! empty($this->getUser()),
-                fn ($query) => $query->firstOrCreate(['user_id' => $this->getUser()->getKey()]),
+                fn ($query) => $query->firstOrCreate(['user_id' => $this->getUser()?->getKey()]),
                 fn ($query) => $query->firstOrCreate(['session_id' => Session::getId()])
             ));
+    }
+
+    /**
+     * @param CartItemContract|string|int $item
+     * @return \Isapp\LaravelCart\Contracts\CartItemContract|null
+     */
+    public function getItem(mixed $item): ?CartItemContract
+    {
+        return once(fn () => $this->get()->items->find(is_scalar($item) ? $item : $item->getKey()));
+    }
+
+    public function hasItem(mixed $item): bool
+    {
+        return once(fn () => $this->get()->items->contains($item));
     }
 
     /**
@@ -114,7 +129,7 @@ class DatabaseDriver implements Driver
      */
     public function increaseQuantity(CartItemContract $item, int $quantity = 1): static
     {
-        $item = $this->get()->items()->find($item->getKey());
+        $item = $this->getItem($item);
 
         if (! $item) {
             throw new NotFoundException('The item not found');
@@ -132,7 +147,7 @@ class DatabaseDriver implements Driver
      */
     public function decreaseQuantity(CartItemContract $item, int $quantity = 1): Driver
     {
-        $item = $this->get()->items()->find($item->getKey());
+        $item = $this->getItem($item);
 
         if (! $item) {
             throw new NotFoundException('The item not found');

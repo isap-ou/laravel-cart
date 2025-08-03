@@ -13,4 +13,6 @@ namespace Isapp\LaravelCart\Contracts;
 interface CartItemContract
 {
     public function itemable();
+
+    public function getKey();
 }
