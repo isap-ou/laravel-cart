@@ -33,4 +33,8 @@ interface Driver
     public function getItemPrice(CartItemContract $item, bool $incTaxes = true): string;
 
     public function getItemPricePerUnit(CartItemContract $item, bool $incTaxes = true): string;
+
+    public function getItem(CartItemContract|string|int $item): ?CartItemContract;
+
+    public function hasItem(CartItemContract|string|int $item): bool;
 }
