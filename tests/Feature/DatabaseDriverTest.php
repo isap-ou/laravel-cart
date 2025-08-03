@@ -20,7 +20,7 @@ class DatabaseDriverTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function addToCart(): void
+    public function add_to_cart(): void
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
@@ -32,7 +32,7 @@ class DatabaseDriverTest extends TestCase
     }
 
     #[Test]
-    public function addToCartGuest(): void
+    public function add_to_cart_guest(): void
     {
         xdebug_break();
         Session::start();
@@ -46,7 +46,7 @@ class DatabaseDriverTest extends TestCase
     }
 
     #[Test]
-    public function addTheSameCartItem(): void
+    public function add_the_same_cart_item(): void
     {
         $user = User::factory()->create();
         Auth::login($user);
@@ -60,7 +60,7 @@ class DatabaseDriverTest extends TestCase
     }
 
     #[Test]
-    public function addCartItemFromOtherCart(): void
+    public function add_cart_item_from_other_cart(): void
     {
         $user = User::factory()->create();
         $user2 = User::factory()->create();
@@ -76,7 +76,7 @@ class DatabaseDriverTest extends TestCase
     }
 
     #[Test]
-    public function increaseQuantity(): void
+    public function increase_quantity(): void
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();

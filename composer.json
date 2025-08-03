@@ -11,8 +11,9 @@
     "e-commerce"
   ],
   "require": {
+    "php": "^8.2",
     "ext-bcmath": "*",
-    "illuminate/support": "^10|^11"
+    "illuminate/support": "^10|^11|^12"
   },
   "support": {
     "email": "contact@isap.me"
@@ -49,5 +50,8 @@
         "Isapp\\LaravelCart\\CartServiceProvider"
       ]
     }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.24"
   }
 }

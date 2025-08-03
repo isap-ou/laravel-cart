@@ -22,6 +22,7 @@ use function bcpow;
 use function class_implements;
 use function config;
 use function method_exists;
+use function once;
 
 class DatabaseDriver implements Driver
 {
@@ -59,7 +60,7 @@ class DatabaseDriver implements Driver
 
     public function get(): Model|Cart
     {
-        return once(fn() => $this->getCartModel()
+        return once(fn () => $this->getCartModel()
             ->with('items.itemable')
             ->when(
                 ! empty($this->getUser()),
@@ -164,6 +165,36 @@ class DatabaseDriver implements Driver
         return $this;
     }
 
+    public function getItemPrice(CartItemContract $item, bool $incTaxes = true): string
+    {
+        if (! method_exists($item->itemable, 'getPrice')) {
+            throw new NotImplementedException('Itemable must implement CartItemProduct');
+        }
+
+        $itemScaleFactor = bcpow('10', (string) $item->decimal_places);
+
+        return bcmul(
+            (string) $item->itemable->getPrice($incTaxes),
+            (string) $item->quantity,
+            $itemScaleFactor
+        );
+    }
+
+    public function getItemPricePerUnit(CartItemContract $item, bool $incTaxes = true): string
+    {
+        if (! method_exists($item->itemable, 'getPrice')) {
+            throw new NotImplementedException('Itemable must implement CartItemProduct');
+        }
+
+        $itemScaleFactor = bcpow('10', (string) $item->decimal_places);
+
+        return bcmul(
+            (string) $item->itemable->getPrice($incTaxes),
+            '1',
+            $itemScaleFactor
+        );
+    }
+
     public function getTotalPrice(bool $incTaxes = true): string
     {
         $totalPrice = '0';
@@ -173,18 +204,7 @@ class DatabaseDriver implements Driver
 
         /** @var CartItemContract $item */
         foreach ($cart->items()->cursor() as $item) {
-            if (! method_exists($item->itemable, 'getPrice')) {
-                continue;
-            }
-
-            $itemScaleFactor = bcpow('10', (string) $item->decimal_places);
-            $pricePerUnit = bcmul(
-                (string) $item->itemable->getPrice($incTaxes),
-                (string) $item->quantity,
-                $itemScaleFactor
-            );
-
-            $totalPrice = bcadd($totalPrice, $pricePerUnit, $cartScaleFactor);
+            $totalPrice = bcadd($totalPrice, $this->getItemPrice($item, $incTaxes), $cartScaleFactor);
         }
 
         return $totalPrice;

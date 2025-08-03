@@ -9,6 +9,9 @@ use Isapp\LaravelCart\Contracts\CartItemContract;
  * @method static \Isapp\LaravelCart\Contracts\Driver driver(string|null $driver = null)
  * @method static \Isapp\LaravelCart\Contracts\Driver storeItem(CartItemContract $item)
  * @method static \Isapp\LaravelCart\Contracts\Driver increaseQuantity(CartItemContract $item, int $quantity = 1)
+ * @method static string getItemPrice(CartItemContract $item, bool $incTaxes = true)
+ * @method static string getItemPricePerUnit(CartItemContract $item, bool $incTaxes = true)
+ * @method static string getTotalPrice(bool $incTaxes = true)
  * @method static \Isapp\LaravelCart\Contracts\Driver get()
  */
 class Cart extends Facade

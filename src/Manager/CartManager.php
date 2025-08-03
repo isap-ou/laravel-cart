@@ -5,7 +5,6 @@ namespace Isapp\LaravelCart\Manager;
 use Illuminate\Support\Manager;
 use Isapp\LaravelCart\Contracts\Driver;
 use Isapp\LaravelCart\Drivers\DatabaseDriver;
-use Isapp\LaravelCart\Drivers\RedisDatabaseDriver;
 
 class CartManager extends Manager
 {
@@ -16,11 +15,6 @@ class CartManager extends Manager
 
     protected function createDatabaseDriver(): Driver
     {
-        return new DatabaseDriver();
-    }
-
-    protected function createRedisDriver(): Driver
-    {
-        return new RedisDatabaseDriver();
+        return new DatabaseDriver;
     }
 }

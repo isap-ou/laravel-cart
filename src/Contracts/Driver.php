@@ -29,4 +29,8 @@ interface Driver
     public function getUser(): ?Authenticatable;
 
     public function getTotalPrice(bool $incTaxes = true): string;
+
+    public function getItemPrice(CartItemContract $item, bool $incTaxes = true): string;
+
+    public function getItemPricePerUnit(CartItemContract $item, bool $incTaxes = true): string;
 }
