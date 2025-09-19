@@ -1,8 +1,8 @@
 # Laravel Cart
+**Laravel Cart** is a highly customizable package that enables you to easily add shopping cart functionality to your Laravel applications. With flexible options for item management, persistent storage, and deep integration with Laravel, it is perfect for building e-commerce or custom shopping features.
+[![Laravel cart](https://github.com/isap-ou/laravel-cart/blob/main/images/banner.jpg?raw=true)](https://github.com/isap-ou/laravel-cart)
 [![Total Downloads](https://img.shields.io/packagist/dt/isapp/laravel-cart.svg?style=flat-square)](https://packagist.org/packages/isapp/laravel-cart)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/isapp/laravel-cart.svg?style=flat-square)](https://packagist.org/packages/isapp/laravel-cart)
-[![TinyMCE Picture Tag Helper for Laravel](https://github.com/isap-ou/laravel-cart/blob/main/images/banner.jpg?raw=true)](https://github.com/isap-ou/laravel-cart)
-**Laravel Cart** is a highly customizable package that enables you to easily add shopping cart functionality to your Laravel applications. With flexible options for item management, persistent storage, and deep integration with Laravel, it is perfect for building e-commerce or custom shopping features.
 
 ## Features
 - ✅ Persistent cart storage (database/session)
