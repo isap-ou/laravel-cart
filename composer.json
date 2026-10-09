@@ -13,7 +13,7 @@
   "require": {
     "php": "^8.2",
     "ext-bcmath": "*",
-    "illuminate/support": "^10|^11|^12"
+    "illuminate/support": "^10|^11|^12|^13"
   },
   "support": {
     "email": "contact@isap.me"
